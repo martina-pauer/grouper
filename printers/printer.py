@@ -107,14 +107,11 @@ class Status3DPrinters:
                 return searching
                 break
 
-    def add_printer(self, group):
+    def add_printer(self, printer: __3DPrinters__):
         '''
-            Join New Printers From Group Into 
-            The Automatitation Group.
+            Join New Printers To The Automatitation Group.
         '''
-        for printer in group.get_printers():
-            # Add From Status3DPrinters Object group The __3DPrinters__ object
-            self.printers_group.append(printer)
+        self.printers_group.append(printer)
 
     def load_model(self, ID, file_handler):
         '''
