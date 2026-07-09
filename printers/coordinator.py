@@ -45,6 +45,6 @@ class PrinterCoordination:
         for checked_group in self.groups:
             checked += f'[ Group {group_number} / {total_groups}]\n'
             for checked_printer in self.check_group:
-                checked += f'\t( Printer "{checked_printer.get_ID()}" )\n'
+                checked += f"\t( Printer '{checked_printer.get_ID()}' )\n"
                 for checked_fail in checked_printer.fails():
                     checked += f'\t\t-> {checked_fail}\n'
