@@ -76,6 +76,72 @@ class __3DPrinters__:
     def print(self):
         '''
             Use Connector Code For Print
-            the loadel 3D Model
+            the loadel 3D Model.
         '''
         pass
+
+class Status3DPrinters:
+    
+    def __init__(self):
+        '''
+            Make A Group Of Connected 3D
+            Printers For Automatitation
+            Coerence.
+        '''
+        self.printers_group: list[__3DPrinters__] = []
+
+    def get_printers(self) -> list[__3DPrinters__]:
+        '''
+            Get All Printers In The Group
+            From External Source.
+        '''
+        return self.printers_group
+
+    def get_printer(self, ID: str) -> __3DPrinters__:
+        '''
+            Search By ID and Return Printer
+            That Have It.
+        '''
+        for searching in self.printers_group:
+            if searching.get_ID() == ID:
+                return searching
+                break
+
+    def add_printer(self, group):
+        '''
+            Join New Printers From Group Into 
+            The Automatitation Group.
+        '''
+        for printer in group.get_printers():
+            # Add From Status3DPrinters Object group The __3DPrinters__ object
+            self.printers_group.append(printer)
+
+    def load_model(self, ID, file_handler):
+        '''
+            Load A 3D Model In Selected By ID Printer.
+        '''
+        self.get_printer(ID).load_model(file_handler)
+
+    def turn_ON_all(self):
+        '''
+            Build All The Blocks In Short Time.
+        '''
+        for turning in self.get_printers():
+            turning.turn_ON()
+
+    def turn_OFF_all(self):
+        '''
+            Close The Factory Turning OFF
+            All The Printers.
+        '''
+        for power in self.get_printers():
+            power.turn_OFF()
+
+    def print_all(self):
+        '''
+            Iterates Over All The Printers
+            For Safe Up That All are Printing
+            Each One His Piece.
+        '''
+        for printer in self.get_printers():
+            printer.print()
