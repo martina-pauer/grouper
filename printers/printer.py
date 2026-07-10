@@ -21,12 +21,26 @@ class __3DPrinters__:
         '''
         self.ID = value
 
-    def SETUP(self, copies: int, material: str, color: str):
+    def SETUP(self, copies: int, material: str, color: str, net, sending):
         '''
             Make Settings and load to 3D Printer
             connected to WI-FI using connector code.
+            
+            Use 3 Printer Parameters and 2 Connector Objects.
         '''
-        pass
+        self.copies = copies
+
+        self.material = material
+
+        self.colors = color
+        # Use Object Created in main script To send data
+        sending.set_printer(net.get_printer_IP(self.get_ID())) 
+        sending.send    (
+                            [
+                                self.copies, self.material,
+                                self.colors
+                            ]
+                        )
 
     def get_ID(self) -> str:
         '''
@@ -73,12 +87,19 @@ class __3DPrinters__:
         '''
         pass
 
-    def print(self):
+    def print(self, sending):
         '''
             Use Connector Code For Print
             the loadel 3D Model.
+
+            Use PrinterSender Object
         '''
-        pass
+        # Make Progressive Printing One Step At time
+        while (self.is_printing and self.fails().__len__() < 3):
+            # Until 3 Common fails Could still printing
+            sending.print_next_step()
+            self.is_printing = sending.get_printing()
+            self.fails = sending.get_fails()
 
 class Status3DPrinters:
     
