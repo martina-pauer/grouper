@@ -1,4 +1,4 @@
-class __3DPrinters__:
+class Obj3DPrinters:
     
     def __init__(self):
         '''
@@ -109,16 +109,16 @@ class Status3DPrinters:
             Printers For Automatitation
             Coerence.
         '''
-        self.printers_group: list[__3DPrinters__] = []
+        self.printers_group: list[Obj3DPrinters] = []
 
-    def get_printers(self) -> list[__3DPrinters__]:
+    def get_printers(self) -> list[Obj3DPrinters]:
         '''
             Get All Printers In The Group
             From External Source.
         '''
         return self.printers_group
 
-    def get_printer(self, ID: str) -> __3DPrinters__:
+    def get_printer(self, ID: str) -> Obj3DPrinters:
         '''
             Search By ID and Return Printer
             That Have It.
@@ -128,7 +128,7 @@ class Status3DPrinters:
                 return searching
                 break
 
-    def add_printer(self, printer: __3DPrinters__):
+    def add_printer(self, printer: Obj3DPrinters):
         '''
             Join New Printers To The Automatitation Group.
         '''
