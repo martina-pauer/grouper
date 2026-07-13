@@ -28,7 +28,7 @@ with open('printers/settings.csv', 'r') as setup:
         # Get data for each printer
         new_printer.set_ID(line[0])
         # Asociate IP address and Printer name
-        net.set_printer(line[1], line[0])
+        net.set_printer(line[1], new_printer)
         sending.set_printer(line[0])
         # Say What and How Print To The Printer
         new_printer.SETUP(line[2], line[3], line[4], net, sending)
@@ -41,6 +41,6 @@ if __name__ == '__main__':
     # Load New logs file
     info.add_text(coordinator.check_group())
     info.save()
-    # Load 3D models
+    # Load 3D models in Correspondent printer
     for model in model_to_printer:
-        net.get_printer_Obj(model[1]).load_model
+        net.get_printer_Obj(model[1]).load_model(model[0])
