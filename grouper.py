@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import time
+import time, os
 # 'printers' folder modules load
 from printers.printer import *
 from printers.coordinator import *
@@ -34,8 +34,13 @@ with open('printers/settings.csv', 'r') as setup:
         new_printer.SETUP(line[2], line[3], line[4], net, sending)
     # Clean memory from unned variables
     del lines
+# nested list 3D model name to printer
+model_to_printer: list[list[str]] = [['example.stl', 'Example A']]    
 # Main Block
 if __name__ == '__main__':
     # Load New logs file
     info.add_text(coordinator.check_group())
     info.save()
+    # Load 3D models
+    for model in model_to_printer:
+        net.get_printer_Obj(model[1]).load_model

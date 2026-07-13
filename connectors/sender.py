@@ -5,13 +5,13 @@ class PrinterSender:
             Send Instructions To A Printer
             in the Printers Network.
         '''
-        self.printer_IDs: str = ''
+        self.printer_ID: str = ''
         
     def set_printer(self, ID: str):
         '''
             Select Printer from the group.
         '''
-        self.printer_IDs = ID
+        self.printer_ID = ID
 
     def send(self, copies: int, material: str, colors: str):
         '''
