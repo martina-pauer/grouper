@@ -64,14 +64,18 @@ class Obj3DPrinters:
             with text values for use later 
             in easy to read web output.
         '''
-        pass
+        mistakes: list[str] = []
+        # Read Logs and copy in readble way to mistakes list
+        # Give mistakes getted
+        return mistakes
 
     def turn_ON(self):
         '''
             Use Connector Code for
             Power On Printer.
         '''
-        pass
+        if not self.is_printing():
+            pass
 
     def turn_OFF(self):
         '''
