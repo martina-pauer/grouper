@@ -84,14 +84,24 @@ class Obj3DPrinters:
             Use Connector Code
             for Power Off the printer.
         '''
-        pass
+        BYTES_OFF = b'14'
+        self.connectors[1].load_bytes(BYTES_OFF)
 
     def load_model(self, file_3D_handler):
         '''
             Use Conector Code For Send 
             The File To the Printer.
         '''
-        pass
+        WAIT_LOAD_STL = b'12'
+        END_LOAD = b'13'
+        self.connectors[1].load_bytes(WAIT_LOAD_STL)
+        del WAIT_LOAD_STL
+        # After give advice that next bytes are STL format
+        with open(file_3D_handler, 'rb') as model:
+            for binary in model.read():
+                self.connectors[1].load_bytes(binary)
+        # Advice when the file has gone
+        self.connectors[1].load_bytes(END_LOAD)
 
     def print(self):
         '''
@@ -100,7 +110,7 @@ class Obj3DPrinters:
 
             Use PrinterSender Object
         '''
-        CONTINUE_PRINTING_BYTE = b'1'
+        CONTINUE_PRINTING_BYTE = b'11'
         # Make Progressive Printing One Step At time
         while (self.is_printing() and self.fails().__len__() < 3):
             # Until 3 Common fails Could still printing
