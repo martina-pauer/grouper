@@ -12,6 +12,8 @@ class Obj3DPrinters:
         self.colors: str = '#bf3333,#11ff21,#1122df,#7f7f81'
         # How Much Pieces Print
         self.copies: int = 1
+        # List For contain Connectors objects for more flexibility and abstraction from them
+        self.connectors: list = ['network.py', 'sender.py']
         
     def set_ID(self, value: str):
         '''
@@ -21,12 +23,12 @@ class Obj3DPrinters:
         '''
         self.ID = value
 
-    def SETUP(self, copies: int, material: str, color: str, net, sending):
+    def SETUP(self, copies: int, material: str, color: str):
         '''
             Make Settings and load to 3D Printer
             connected to WI-FI using connector code.
             
-            Use 3 Printer Parameters and 2 Connector Objects.
+            Use 3 Printing Parameters: copies, plastic kind & Hex color CSV.
         '''
         self.copies = copies
 
@@ -34,13 +36,13 @@ class Obj3DPrinters:
 
         self.colors = color
         # Use Object Created in main script To send data
-        sending.set_printer(net.get_printer_IP(self.get_ID())) 
-        sending.send    (
-                            [
-                                self.copies, self.material,
-                                self.colors
-                            ]
-                        )
+        self.connectors[1].set_printer(self.connectors[0].get_printer_IP(self.get_ID())) 
+        self.connectors[1].send (
+                                    [
+                                        self.copies, self.material,
+                                        self.colors
+                                    ]
+                                )
 
     def get_ID(self) -> str:
         '''
@@ -55,7 +57,7 @@ class Obj3DPrinters:
             if the printer continue printing 
             the piece.
         '''
-        pass
+        return self.connectors[1].get_printing()
 
     def fails(self) -> list[str]:
         '''
@@ -91,19 +93,26 @@ class Obj3DPrinters:
         '''
         pass
 
-    def print(self, sending):
+    def print(self):
         '''
             Use Connector Code For Print
             the loadel 3D Model.
 
             Use PrinterSender Object
         '''
+        CONTINUE_PRINTING_BYTE = b'1'
         # Make Progressive Printing One Step At time
-        while (self.is_printing and self.fails().__len__() < 3):
+        while (self.is_printing() and self.fails().__len__() < 3):
             # Until 3 Common fails Could still printing
-            sending.print_next_step()
-            self.is_printing = sending.get_printing()
-            self.fails = sending.get_fails()
+            self.connectors[1].load_bytes(CONTINUE_PRINTING_BYTE)
+
+    def add_connectors(self, net, sending):
+        '''
+            Save at internal list the WI-FI connectors
+            interface.
+        '''
+        self.connectors[0] = net
+        self.connectors[1] = sending
 
 class Status3DPrinters:
     

@@ -20,18 +20,19 @@ sending = PrinterSender()
 coordinator = PrinterCoordination()
 printers_group = Status3DPrinters()
 # Add Printer from settings file
+new_printer = Obj3DPrinters()
+new_printer.add_connectors(net, sending)
 with open('printers/settings.csv', 'r') as setup:
     lines: list[str] = setup.readlines()
     for line in lines:
         line: list[str] = line.split(',')
-        new_printer = Obj3DPrinters()
         # Get data for each printer
         new_printer.set_ID(line[0])
         # Asociate IP address and Printer name
         net.set_printer(line[1], new_printer)
         sending.set_printer(line[0])
         # Say What and How Print To The Printer
-        new_printer.SETUP(line[2], line[3], line[4], net, sending)
+        new_printer.SETUP(line[2], line[3], line[4])
     # Clean memory from unned variables
     del lines
 # nested list 3D model name to printer
