@@ -6,6 +6,7 @@ class PrinterSender:
             in the Printers Network.
         '''
         self.printer_ID: str = ''
+        self.IP: str = 'x.x.x.x'
         
     def set_printer(self, ID: str):
         '''
@@ -13,6 +14,13 @@ class PrinterSender:
         '''
         self.printer_ID = ID
 
+    def set_address(self, Address: str):
+        '''
+            Add IP addres asociated to the
+            printer.
+        '''
+        self.IP = Address
+        
     def send(self, copies: int, material: str, colors: str):
         '''
             Use WI-FI tools for say to the printer how much copies print,

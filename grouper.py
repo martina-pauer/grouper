@@ -30,6 +30,7 @@ with open('printers/settings.csv', 'r') as setup:
         new_printer.set_ID(line[0])
         # Asociate IP address and Printer name
         net.set_printer(line[1], new_printer)
+        sending.set_address(line[1])
         sending.set_printer(line[0])
         # Say What and How Print To The Printer
         new_printer.SETUP(line[2], line[3], line[4])
