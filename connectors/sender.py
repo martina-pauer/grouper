@@ -21,6 +21,17 @@ class PrinterSender:
         '''
         pass
     
+    def load_bytes(self):
+        '''
+            Use Socket for send bytes to the
+            printer
+        '''
+        import socket
+        # Create socket
+        # Get printer IP and connect socket
+        # Send bytes to the printer
+        # Close socket connection for could be created again
+
     def get_printing(self) -> bool:
         '''
             Use WI-FI tools for
