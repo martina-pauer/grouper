@@ -46,7 +46,7 @@ class PrinterSender:
             check if the printer is printing.
         '''
         pass
-
+    
     def get_fails(self) -> list[str]:
         '''
             Check connectivity, printing
@@ -58,3 +58,9 @@ class PrinterSender:
             fail.append('Not Printing')
 
         return fail
+
+    def get_IP(self) -> str:
+        '''
+            Give The Printer IP address.
+        '''
+        return self.IP
