@@ -27,35 +27,57 @@ class PrinterSender:
             what material use and what colors (from 1 to 4 tex list) 
             going to use.
         '''
-        pass
+        PRINTING_BYTES = b'17'
+        for copy in range(0, copies):
+            if self.get_fails() < 3:
+                self.load_bytes(PRINTING_BYTES)
+                self.load_bytes(bytes(material, 'utf-8'))
+                for color in colors.split(','):
+                    # Use AMS lite Color System
+                    self.load_bytes(bytes(color, 'utf-8'))
+                if not self.get_printing():
+                    break
     
-    def load_bytes(self):
+    def load_bytes(self, load: bytes):
         '''
             Use Socket for send bytes to the
-            printer
+            printer.
         '''
         import socket
         # Create socket
-        # Get printer IP and connect socket
+        BYTE_LOADER_SOCKET = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        # Get printer IP and connect socket with IoT port with MQTT (Message Queuing Telemetry Transport)
+        BYTE_LOADER_SOCKET.connect((self.get_IP(), 8883))
         # Send bytes to the printer
+        BYTE_LOADER_SOCKET.send(load)
         # Close socket connection for could be created again
+        BYTE_LOADER_SOCKET.close()
 
     def get_printing(self) -> bool:
         '''
             Use WI-FI tools for
             check if the printer is printing.
         '''
-        pass
+        CHECK_BYTES = b'16'
+        self.load_bytes(CHECK_BYTES)
+        return True
     
     def get_fails(self) -> list[str]:
         '''
             Check connectivity, printing
             and material stock.
         '''
+        import os
         fail: list[str] = []
         
         if not self.get_printing():
             fail.append('Not Printing')
+        if os.system(f'ping -c1 {self.IP}') != 512:
+            fail.append('Printer Without WI-FI')    
+            del os
+        if False:
+            # No Material for make printer
+            fail.append('Material Empty')    
 
         return fail
 
