@@ -1,5 +1,9 @@
 {
     "print": {
-        "seq"
+        "sequence_id": "ORDER",
+        "command": "project_file",
+        "url": "file:///sdcard/model.3mf",
+        "param": "Metada/plate_1.gcode",
+        "use_ams": false
     }
 }
