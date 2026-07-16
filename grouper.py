@@ -37,7 +37,7 @@ with open('printers/settings.csv', 'r') as setup:
     # Clean memory from unned variables
     del lines
 # nested list 3D model name to printer
-model_to_printer: list[list[str]] = [['example.stl', 'Example A']]    
+model_to_printer: list[list[str]] = [['example.3mf', 'Example A']]    
 # Main Block
 if __name__ == '__main__':
     # Load New logs file
