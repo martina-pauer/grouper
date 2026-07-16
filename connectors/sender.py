@@ -88,7 +88,7 @@ class PrinterSender:
         elif (load == b'12'):
             loader('load-file.json', BYTE_LOADER_SOCKET)
         elif (load == b'13'):
-            pass
+            loader('end-load.json', BYTE_LOADER_SOCKET, self)
         elif (load == b'14'):
             loader('shutdown.json', BYTE_LOADER_SOCKET, self)
         elif (load == b'16'):

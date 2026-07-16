@@ -1,5 +1,5 @@
 {
-    "print": {
+    "pushing": {
         "sequence_id": "ORDER",
         "command": "pushall"
     }

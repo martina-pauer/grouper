@@ -1,0 +1,7 @@
+{
+    "print": {
+        "sequence_id": "ORDER",
+        "command": "gcode_line",
+        "param": "G0 Z10; \n"
+    }
+}
