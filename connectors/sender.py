@@ -11,6 +11,25 @@ def loader(file_name: str, sock, obj):
     # Send All joined For Prevent From mistakes        
     sock.send(bytes(content, 'utf-8'))
         
+def save_on_SD(file_path: str, IP: str, keyword: str):
+    '''
+        Use FTPS to store on printer SD card the 
+        .3mf 3D printing format file.
+    '''
+    from ftplib import FTP_TLS
+    import ssl
+
+    ftps = FTP_TLS()
+    ftps.ssl_version = ssl.PROTOCOL_TLSv1_2
+    # Start Session in Bambulab Printer and send files
+    ftps.connect(host = IP, port = 990)
+    ftps.login(user = 'bblp', passwd = keyword)
+    ftps.prot_p()
+    # Read Binary file and send using STOR ftps command
+    with open(file_path, 'rb') as bin:
+        # Send file to model.3mf file in SD card
+        ftps.storbinary('stor /model.3mf', bin)
+    ftps.quit()
 
 class PrinterSender:
 
