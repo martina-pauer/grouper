@@ -44,5 +44,7 @@ if __name__ == '__main__':
     info.add_text(coordinator.check_group())
     info.save()
     # Load 3D models in Correspondent printer
+    keyword = input('Write Bambu Lab FTPS password: ')
     for model in model_to_printer:
+        save_on_SD(f'/workspaces/grouper/{model[0]}', net.get_printer_IP(model[1]), keyword)
         net.get_printer_Obj(model[1]).load_model(model[0])
