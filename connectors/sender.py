@@ -1,4 +1,4 @@
-def loader(file_name: str, sock):
+def loader(file_name: str, sock, obj):
     '''
         Use MQTT protocol for communicate by socket with
         Bambu Lab printer sending JSON file with orders.
@@ -7,7 +7,7 @@ def loader(file_name: str, sock):
     # Join Lines in One Text In Order
     with open(f'/workspaces/grouper/connectors/MQTT/{file_name}', 'r') as part:
         for line in part.readlines():
-            content += line
+            content += line.replace('ORDER', obj.order_number.__str__())
     # Send All joined For Prevent From mistakes        
     sock.send(bytes(content, 'utf-8'))
         
@@ -71,11 +71,11 @@ class PrinterSender:
         elif (load == b'13'):
             pass
         elif (load == b'14'):
-            loader('shutdown.json', BYTE_LOADER_SOCKET)
+            loader('shutdown.json', BYTE_LOADER_SOCKET, self)
         elif (load == b'16'):
-            loader('verification.json', BYTE_LOADER_SOCKET)
+            loader('verification.json', BYTE_LOADER_SOCKET, self)
         elif (load == b'17'):
-            loader('settings.json', BYTE_LOADER_SOCKET)
+            loader('settings.json', BYTE_LOADER_SOCKET, self)
             
         # Close socket connection for could be created again
         BYTE_LOADER_SOCKET.close()
