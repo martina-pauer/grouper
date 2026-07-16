@@ -7,6 +7,7 @@ class PrinterSender:
         '''
         self.printer_ID: str = ''
         self.IP: str = 'x.x.x.x'
+        self.order_number: int = 1
         
     def set_printer(self, ID: str):
         '''
@@ -52,6 +53,7 @@ class PrinterSender:
         BYTE_LOADER_SOCKET.send(load)
         # Close socket connection for could be created again
         BYTE_LOADER_SOCKET.close()
+        self.order_number += 1
 
     def get_printing(self) -> bool:
         '''
