@@ -1,0 +1,6 @@
+{
+    "print": {
+        "sequence_id": "ORDER",
+        "command": "pushall"
+    }
+}

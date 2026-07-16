@@ -1,0 +1,7 @@
+{
+    "print": {
+        "sequence_id": "ORDER",
+        "command": "gcode_line",
+        "param": "M104 S0; \n M140 S0; \n M107; \n"
+    }
+}
