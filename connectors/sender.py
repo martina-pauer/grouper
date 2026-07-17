@@ -1,3 +1,5 @@
+SOURCE_FOLDER: str = '/workspaces/grouper/'
+
 def loader(file_name: str, sock, obj):
     '''
         Use MQTT protocol for communicate by socket with
@@ -5,13 +7,13 @@ def loader(file_name: str, sock, obj):
     '''
     content: str = ''
     # Join Lines in One Text In Order
-    with open(f'/workspaces/grouper/connectors/MQTT/{file_name}', 'r') as part:
+    with open(f'{SOURCE_FOLDER}connectors/MQTT/{file_name}', 'r') as part:
         for line in part.readlines():
             content += line.replace('ORDER', obj.order_number.__str__())
     # Send All joined For Prevent From mistakes        
     sock.send(bytes(content, 'utf-8'))
         
-def save_on_SD(file_path: str, IP: str, keyword: str):
+def save_on_SD(file_name: str, IP: str, keyword: str):
     '''
         Use FTPS to store on printer SD card the 
         .3mf 3D printing format file.
@@ -26,9 +28,9 @@ def save_on_SD(file_path: str, IP: str, keyword: str):
     ftps.login(user = 'bblp', passwd = keyword)
     ftps.prot_p()
     # Read Binary file and send using STOR ftps command
-    with open(file_path, 'rb') as bin:
+    with open(f'{SOURCE_FOLDER}{file_name}', 'rb') as bin:
         # Send file to model.3mf file in SD card
-        ftps.storbinary('stor /model.3mf', bin)
+        ftps.storbinary(f'STOR /{file_name}.3mf', bin)
     ftps.quit()
 
 class PrinterSender:

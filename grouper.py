@@ -37,7 +37,11 @@ with open('printers/settings.csv', 'r') as setup:
     # Clean memory from unned variables
     del lines
 # nested list 3D model name to printer
-model_to_printer: list[list[str]] = [['example.3mf', 'Example A']]    
+model_to_printer: list[list[str]] = []
+
+with open('printers/model_to_printer.csv', 'r') as relation:
+    for rel in relation.readlines():
+        model_to_printer.append(rel.replace('\n', '').split(','))
 # Main Block
 if __name__ == '__main__':
     # Load New logs file
@@ -46,5 +50,5 @@ if __name__ == '__main__':
     # Load 3D models in Correspondent printer
     keyword = input('Write Bambu Lab FTPS password: ')
     for model in model_to_printer:
-        save_on_SD(f'/workspaces/grouper/{model[0]}', net.get_printer_IP(model[1]), keyword)
+        save_on_SD(f'{model[0]}', net.get_printer_IP(model[1]), keyword)
         net.get_printer_Obj(model[1]).load_model(model[0])
