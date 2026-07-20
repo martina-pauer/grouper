@@ -50,5 +50,12 @@ if __name__ == '__main__':
     # Load 3D models in Correspondent printer
     keyword = input('Write Bambu Lab FTPS password: ')
     for model in model_to_printer:
+        # Get New Printer from Printers Network Loop
+        getted_printer: Obj3DPrinters = net.get_printer_Obj(model[1])
+        # Load Model into printer
         save_on_SD(f'{model[0]}', net.get_printer_IP(model[1]), keyword)
-        net.get_printer_Obj(model[1]).load_model(model[0])
+        getted_printer.load_model(model[0])
+        # Send To Print
+        getted_printer.print()
+        # Del object to save memory and reduce problems
+        del getted_printer
