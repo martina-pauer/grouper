@@ -18,5 +18,5 @@ class Polygon:
             end of file.
         '''
         # Give Name   
-        with open(f'model_from_image_{file_name}') as model:
+        with open(f'model_from_image_{file_name}', 'wb') as model:
             model.write(bytes(self.edges.__str__(), 'utf-8'))
