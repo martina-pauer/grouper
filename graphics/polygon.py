@@ -19,4 +19,12 @@ class Polygon:
         '''
         # Give Name   
         with open(f'model_from_image_{file_name}', 'wb') as model:
-            model.write(bytes(self.edges.__str__(), 'utf-8'))
+            for vertex in range(0, self.vertices):
+                # Write byte to Add Vertex
+                model.write(b'15')
+                for faces in range(0, self.faces):
+                    # Write byte to Add Face
+                    model.write(b'3')
+                for edge in range(0, self.edges):
+                    # Write byte to Add Edge
+                    model.write(b'4')
