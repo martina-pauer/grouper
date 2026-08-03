@@ -5,10 +5,18 @@ body
     text-align: center;
 }
 
+label
+{
+    margin: 0.5em;
+}
+
 section
 {
     border: 2px solid #000000;
     padding: 1em; 
+    width: 40.5em;
+    height: 50%;
+    position: absolute;
 }
 
 input, select
@@ -25,6 +33,8 @@ input[type=submit]
 #right-side
 {
     text-align: right;
+    float: right;
+    right: 0em;
 }
 
 #left-side
