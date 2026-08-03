@@ -1,0 +1,33 @@
+body
+{
+    margin: 0em;
+    padding: 0em auto;
+    text-align: center;
+}
+
+section
+{
+    border: 2px solid #000000;
+    padding: 1em; 
+}
+
+input, select
+{
+    height: 2em;
+    width: 75%;
+}
+
+input[type=submit]
+{
+    width: 100%;
+}
+
+#right-side
+{
+    text-align: right;
+}
+
+#left-side
+{
+    text-align: left;
+}

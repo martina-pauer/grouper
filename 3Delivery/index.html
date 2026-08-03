@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset ="utf-8" />
+        <meta name = "author" content = "Martina Pauer" />
+        <meta name = "keyword" content = "3,d,delivery,app,impresora,web,pauer,martina" />
+        <title>3Delivery App</title>
+        <link rel = "stylesheet" href = "style.css" />
+    </head>
+    <body>
+        <form id = "delivery-form" name = "delivery-form" action = "delivery" method = "POST">
+            <aside id = "two-sides">
+                <section id = "left-side" name = "left-side">
+                    <!-- Data Entry Side -->
+                    <input id = "model" name = "model" type = "file" /><br />
+                    <input id = "copies" name = "copies" type = "number" min = "1" max = "10" /><label>copias</label><br /> 
+                    <select id = "material" name = "material">
+                        <option>PETG</option>
+                        <option>PLA</option>
+                        <option>TPU</option>
+                        <option>PVA</option>
+                    </select><br />
+                    <input id = "ticket-CODE" name = "ticket-CODE" type = "submit" value = "ticket" />
+                </section>
+                <section id = "right-side" name = "right-side">
+                    <!-- Map Side -->
+                </section>
+            </aside>
+        </form>
+    </body>    
+</html>
