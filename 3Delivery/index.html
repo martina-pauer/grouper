@@ -5,6 +5,7 @@
         <meta name = "keyword" content = "3,d,delivery,app,impresora,web,pauer,martina" />
         <title>3Delivery App</title>
         <link rel = "stylesheet" href = "style.css" />
+        <script type = "text/javascript" src = "canvasMap.js"></script>
     </head>
     <body>
         <form id = "delivery-form" name = "delivery-form" action = "delivery" method = "POST">
@@ -23,6 +24,7 @@
                 </section>
                 <section id = "right-side" name = "right-side">
                     <!-- Map Side -->
+                     <canvas id = "map" onload = "javascript:plotMap('map', -387175, -622655);"
                 </section>
             </aside>
         </form>
