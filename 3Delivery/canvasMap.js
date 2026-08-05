@@ -11,6 +11,12 @@ function plotMap(id, longitude, latitude)
     canvas.strokeRect(width, height, 10, 10)
 }
 
+function decToHex(number)
+{
+    // Turn Decimal number to hexadecimal number
+    return number;
+}
+
 async function saveContent(id)
 {
     // Save In Cookies the bytes for server cookie getter
@@ -30,7 +36,7 @@ async function saveContent(id)
 		        if (byte <= 4095)
 				{
                     // Only Accept Files of 4 KB as Maximum
-				    content = content.concat(bytes[byte]);
+				    content = content.concat(decToHex(bytes[byte]));
 				}   
 			}
 				    
