@@ -10,3 +10,30 @@ function plotMap(id, longitude, latitude)
     // Add Mark
     canvas.strokeRect(width, height, 10, 10)
 }
+
+async function saveContent(id)
+{
+    // Save In Cookies the bytes for server cookie getter
+		let files = document.getElementById(id).files;
+		let buffer
+			
+		let bytes;
+		let content = "";
+				
+		for (let file in files)
+		{
+		    buffer = await files[file].arrayBuffer();
+		    bytes = new Uint8Array(buffer)
+				    
+		    for (let byte in bytes)
+		    {
+		        if (byte <= 4095)
+				{
+                    // Only Accept Files of 4 KB as Maximum
+				    content = content.concat(bytes[byte]);
+				}   
+			}
+				    
+			document.cookie = "grouper=" + content;
+		}
+}
