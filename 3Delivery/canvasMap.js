@@ -14,6 +14,23 @@ function plotMap(id, longitude, latitude)
 function decToHex(number)
 {
     // Turn Decimal number to hexadecimal number
+	let digits = ["F", "E", "D", "C", "B", "A", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0"];
+	// Use digits in right order to give rights results
+	digits = digits.reverse();
+	// Use Nested Loops Decimal Convertion Comparing Until Found the number
+	for (leftDigit in digits)
+	{
+		for (rightDigit in digits)
+		{
+			let compared = digits[leftDigit].concat(digits[rightDigit])
+
+			if (parseInt(compared, 16) == number)
+			{
+				number = compared;
+				break;
+			}	
+		}
+	}
     return number;
 }
 
