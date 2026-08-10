@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask import request
 
 app = Flask(__name__)
@@ -7,18 +7,16 @@ inform_code: str = ''
 
 @app.route('/', methods = ['GET'])
 def page() -> str:
-    text: str = ''
-
-    with open('index.html', 'r') as content:
+    with open('templates/index.html', '+r') as content:
         for line in content.readlines():
-            if text.__contains__('CODE'):
+            if line.__contains__('CODE'):
                 # Generate different ticket code in each running
                 inform_code = hex(hash('CODE').__abs__()).replace('0x', 'c')
-                text += line.replace('CODE', inform_code)
+                content.write(line.replace('CODE', inform_code))
             else:
                 # Add HTML line to render web
-                text += line    
-    return text
+                pass    
+    return render_template('/workspaces/grouper/3Delivery/templates/index.html')
 
 @app.route('/delivery', methods = ['POST'])
 def inform() -> str:
