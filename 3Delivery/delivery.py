@@ -7,16 +7,18 @@ inform_code: str = ''
 
 @app.route('/', methods = ['GET'])
 def page() -> str:
-    with open('templates/index.html', '+r') as content:
+    text: str = ''
+
+    with open('templates/index.html', 'r') as content:
         for line in content.readlines():
-            if line.__contains__('CODE'):
+            if text.__contains__('CODE'):
                 # Generate different ticket code in each running
                 inform_code = hex(hash('CODE').__abs__()).replace('0x', 'c')
-                content.write(line.replace('CODE', inform_code))
+                text += line.replace('CODE', inform_code)
             else:
                 # Add HTML line to render web
-                pass    
-    return render_template('/workspaces/grouper/3Delivery/templates/index.html')
+                text += line    
+    return text
 
 @app.route('/delivery', methods = ['POST'])
 def inform() -> str:

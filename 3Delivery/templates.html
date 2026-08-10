@@ -4,8 +4,8 @@
         <meta name = "author" content = "Martina Pauer" />
         <meta name = "keyword" content = "3,d,delivery,app,impresora,web,pauer,martina" />
         <title>3Delivery App</title>
-        <link rel = "stylesheet" href = "https://rawcdn.githack.com/martina-pauer/grouper/refs/heads/main/3Delivery/static/style.css" />
-        <script type = "text/javascript" src = "https://rawcdn.githack.com/martina-pauer/grouper/refs/heads/main/3Delivery/canvasMap.js"></script>
+        <link rel = "stylesheet" href = "{{url_for('static', 'style.css'}}" />
+        <script type = "text/javascript" src = "{{url_for('static', 'canvasMap.js')}}"></script>
     </head>
     <body>
         <form id = "delivery-form" name = "delivery-form" action = "delivery" method = "POST">
@@ -20,7 +20,7 @@
                         <option>TPU</option>
                         <option>PVA</option>
                     </select><br />
-                    <input id = "ticket-CODE" name = "ticket-CODE" type = "submit" value = "ticket" />
+                    <input id = "ticket-c2e80ba0c2da8b769" name = "ticket-c2e80ba0c2da8b769" type = "submit" value = "ticket" />
                 </section>
                 <section id = "right-side" name = "right-side">
                     <!-- Map Side -->
