@@ -3,6 +3,8 @@ from flask import request
 
 app = Flask(__name__)
 
+inform_code: str = ''
+
 @app.route('/', methods = ['GET'])
 def page() -> str:
     text: str = ''
@@ -11,7 +13,8 @@ def page() -> str:
         for line in content.readlines():
             if text.__contains__('CODE'):
                 # Generate different ticket code in each running
-                text += line.replace('CODE', hex(hash('CODE').__abs__()).replace('0x', 'c'))
+                inform_code = hex(hash('CODE').__abs__()).replace('0x', 'c')
+                text += line.replace('CODE', inform_code)
             else:
                 # Add HTML line to render web
                 text += line    
@@ -19,7 +22,15 @@ def page() -> str:
 
 @app.route('/delivery', methods = ['POST'])
 def inform() -> str:
+    '''
+        Generate reports and save delivery data into
+        database to send later.
+    '''
     import sqlite3
+    connector = sqlite3.connect('delivery.db')
+    runner = connector.cursor()
+    # Data to save in database
+    file_name: str = ''
 
     data: list[str] =   [
                             request.cookies['grouper'],
@@ -35,8 +46,21 @@ def inform() -> str:
             # Add each Two digits digits As Bytes
             binary.append(bytes(int((bin + data[data.index(bin)] + 1), 16), 'utf-8'))
     # Write as binary file in models folder
-    with open(f'models/user_{binary.__hash__()}.3mf', 'wb') as writer:
+    file_name = binary.__hash__()
+    with open(f'models/user_{file_name}.3mf', 'wb') as writer:
         for bin in binary:
             writer.write(bin)
-                     
+
+    # Save Into database
+    try:
+        runner.execute('CREATE TABLE delivery(Code varchar(20), File varchar(20), Copies int, Material varchar(4), Place varchar(20));')
+        connector.commit()
+    except:
+        pass    
+    runner.execute(f'INSERT INTO delivery(Code, File, Copies, Material) VALUES ({inform_code}, {file_name}, {data[0]}, {data[1]});')                 
+    connector.commit()
+    # Close All
+    connector.close()
+    runner.close()
+    # Render the form for view the loaded data
     return page()
