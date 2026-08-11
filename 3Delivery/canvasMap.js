@@ -45,18 +45,22 @@ async function saveContent(id)
 				
 		for (let file in files)
 		{
-		    buffer = await files[file].arrayBuffer();
-		    bytes = new Uint8Array(buffer)
+		  // filter only list index instead of list properties
+			if ((file.charCodeAt(0) > 47) && (file.charCodeAt(0) < 58))
+			{
+		    	buffer = await files[file].arrayBuffer();
+		    	bytes = new Uint8Array(buffer)
 				    
-		    for (let byte in bytes)
-		    {
-		        if (byte <= 4095)
-				{
-                    // Only Accept Files of 4 KB as Maximum
-				    content = content.concat(decToHex(bytes[byte]));
-				}   
-			}
+		    	for (let byte in bytes)
+		    	{
+		        	if (byte <= 4095)
+					{
+                    	// Only Accept Files of 4 KB as Maximum
+				    	content = content.concat(decToHex(bytes[byte]));
+					}   
+				}
 				    
-			document.cookie = "grouper=" + content;
+				document.cookie = "grouper=" + content;
+			}	
 		}
 }
