@@ -42,25 +42,27 @@ def inform() -> str:
     binary: list[bytes] = []
 
     for bin in data[0]:
-        if (data.index(bin) % 2 == 0):
-            # Add each Two digits digits As Bytes
-            binary.append(bytes(int((bin + data[data.index(bin)] + 1), 16), 'utf-8'))
+        try:
+            if (data.index(bin) % 2 == 0):
+                # Add each Two digits digits As Bytes
+                binary.append(bytes(int((bin + data[data.index(bin)] + 1), 16), 'utf-8'))
+        except:
+            pass
     # Write as binary file in models folder
-    file_name = binary.__hash__()
-    with open(f'models/user_{file_name}.3mf', 'wb') as writer:
-        for bin in binary:
-            writer.write(bin)
-
+    try:
+        file_name = binary.__hash__()
+        with open(f'models/user_{file_name}.3mf', 'wb') as writer:
+            for bin in binary:
+                writer.write(bin)
+    except:
+        pass
     # Save Into database
     try:
         runner.execute('CREATE TABLE delivery(Code varchar(20), File varchar(20), Copies int, Material varchar(4), Place varchar(20));')
         connector.commit()
+        runner.execute(f'INSERT INTO delivery(Code, File, Copies, Material) VALUES ({inform_code}, {file_name}, {data[0]}, {data[1]});')                 
+        connector.commit()
     except:
-        pass    
-    runner.execute(f'INSERT INTO delivery(Code, File, Copies, Material) VALUES ({inform_code}, {file_name}, {data[0]}, {data[1]});')                 
-    connector.commit()
-    # Close All
-    connector.close()
-    runner.close()
+        pass
     # Render the form for view the loaded data
     return page()
