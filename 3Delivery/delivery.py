@@ -5,8 +5,27 @@ app = Flask(__name__)
 
 inform_code: str = ''
 
+def byte_translate(character) -> str:
+    '''
+        Decode character using table as byte 
+        hexadecimal numeric text.
+    '''
+    state = character
+
+    if character == 'x':
+        state = 'A'
+    elif character == 'g':
+        state = 'B'
+        
+    return state
+
 @app.route('/', methods = ['GET'])
 def page() -> str:
+    '''
+        Use template for generate web
+        form for define new delivery
+        request.
+    '''
     text: str = ''
 
     with open('templates/index.html', 'r') as content:
@@ -41,13 +60,9 @@ def inform() -> str:
     # Load file binary content
     binary: list[bytes] = []
 
-    for bin in data[0]:
-        try:
-            if (data.index(bin) % 2 == 0):
-                # Add each Two digits digits As Bytes
-                binary.append(bytes(int((bin + data[data.index(bin)] + 1), 16), 'utf-8'))
-        except:
-            pass
+    for b in data[0]:
+        # Add One Character that represent Byte
+        binary.append(bytes(int(byte_translate(b), 16)), 'utf-8'))
     # Write as binary file in models folder
     try:
         file_name = binary.__hash__()
