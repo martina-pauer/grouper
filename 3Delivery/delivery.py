@@ -16,6 +16,22 @@ def byte_translate(character) -> str:
         state = 'A'
     elif character == 'g':
         state = 'B'
+    elif character == 'h':
+        state = 'C'
+    elif character == 'i':
+        state = 'D'
+    elif character == 'j':
+        state = 'E'
+    elif character == 'k':
+        state = 'F'
+    elif character == 'l':
+        state = '10'
+    elif character == 'm':
+        state = '11'
+    elif character == 'n':
+        state = '12'
+    elif character == 'o':
+        state = '13'
         
     return state
 
@@ -62,7 +78,7 @@ def inform() -> str:
 
     for b in data[0]:
         # Add One Character that represent Byte
-        binary.append(bytes(int(byte_translate(b), 16)), 'utf-8'))
+        binary.append(bytes(int(byte_translate(b), 16), 'utf-8'))
     # Write as binary file in models folder
     try:
         file_name = binary.__hash__()
