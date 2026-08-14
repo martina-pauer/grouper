@@ -42,6 +42,55 @@ function decToHex(number)
     return number;
 }
 
+function bytes_translate(character)
+{
+	// Turn Hexadecimal numbers into 1 character
+	let state = character;
+	// From A to FF turn into respective character
+	if (character == "A")
+	{
+		state = "x";
+	}
+	else if (character == "B")
+	{
+		state =	"g";
+	}
+	else if (character == "C")
+	{
+		state = "h";
+	}
+	else if (character == "D")
+	{
+		state = "i";
+	}
+	else if (character == "E")
+	{
+		state = "j";
+	}
+	else if (character == "F")
+	{
+		state = "k";
+	}
+	else if (character == "10")
+	{
+		state = "l";
+	}
+	else if (character == "11")
+	{
+		state = "m";
+	}
+	else if (character == "12")
+	{
+		state = "n";
+	}
+	else if (character == "13")
+	{
+		state = "o";
+	}								
+
+	return state;
+}
+
 async function saveContent(id)
 {
     // Save In Cookies the bytes for server cookie getter
@@ -63,8 +112,8 @@ async function saveContent(id)
 		    	{
 		        	if (byte <= 4095)
 					{
-                    	// Only Accept Files of 4 KB as Maximum
-				    	content = content.concat(decToHex(bytes[byte]));
+                    	// Compress To don't pass The 4kb Cookie Maximum Size
+				    	content = content.concat(bytes_translate(decToHex(bytes[byte])));
 					}   
 				}
 				    
