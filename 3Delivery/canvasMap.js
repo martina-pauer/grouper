@@ -86,8 +86,24 @@ function bytes_translate(character)
 	else if (character == "13")
 	{
 		state = "o";
-	}								
-
+	}
+	else if (character == "14")
+	{
+		state = "p";
+	}
+	else if (character == "15")
+	{									
+		state = "q";
+	}
+	else if (character == "16")
+	{
+		state = "r";
+	}
+	else if (character == "17")
+	{
+		state = "s";
+	}
+	// Give The One Digit Character Compressing For Cookie Size
 	return state;
 }
 
