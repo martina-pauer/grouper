@@ -32,6 +32,14 @@ def byte_translate(character) -> str:
         state = '12'
     elif character == 'o':
         state = '13'
+    elif character == 'p':
+        state = '14'
+    elif character == 'q':
+        state = '15'
+    elif character == 'r':
+        state = '16'
+    elif character == 's':
+        state = '17'    
         
     return state
 
