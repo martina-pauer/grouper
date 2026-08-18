@@ -39,7 +39,27 @@ def byte_translate(character) -> str:
     elif character == 'r':
         state = '16'
     elif character == 's':
-        state = '17'    
+        state = '17'
+    elif character == 't':
+        state = '18'
+    elif character == 'u':
+        state = '19'
+    elif character == 'v':
+        state = '1A'
+    elif character == 'w':
+        state = '1B'
+    elif character == 'y':
+        state = '1C'
+    elif character == 'z':
+        state = '1D'
+    elif character == '+':
+        state = '1E'
+    elif character == '*':
+        state = '1F'
+    elif character == '-':
+        state = '20'
+    elif  character == '/':
+        state = '21'              
         
     return state
 
