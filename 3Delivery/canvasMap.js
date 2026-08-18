@@ -103,6 +103,47 @@ function bytes_translate(character)
 	{
 		state = "s";
 	}
+	else if (character == "18")
+	{
+		state = "t";
+	}
+	else if (character == "19")
+	{
+		state = "u";
+	}
+	else if (character == "1A")
+	{
+		state = "v";
+	
+	}
+	else if (character == "1B")
+	{
+		state = "w";
+	}
+	else if (character == "1C")
+	{
+		state = "y";
+	}
+	else if (character == "1D")
+	{
+		state = "z";
+	}
+	else if (character == "1E")
+	{
+		state = "+";
+	}
+	else if (character == "1F")
+	{
+		state = "*";
+	}
+	else if (character == "20")
+	{
+		state = "-";
+	}				
+	else if (character == "21")
+	{
+		state = "/";
+	}			
 	// Give The One Digit Character Compressing For Cookie Size
 	return state;
 }
