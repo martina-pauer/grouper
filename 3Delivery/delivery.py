@@ -59,7 +59,27 @@ def byte_translate(character) -> str:
     elif character == '-':
         state = '20'
     elif  character == '/':
-        state = '21'              
+        state = '21'
+    elif character == '.':
+        state = '22'
+    elif character == ',':
+        state = '23'
+    elif character == ';':
+        state = '24'
+    elif character == '{':
+        state = '25'
+    elif character == '}':
+        state = '26'
+    elif character == '(':
+        state = '27'
+    elif character == ')':
+        state = '28'
+    elif character == ':':
+        state = '29'
+    elif character == '@':
+        state = '2A'
+    elif character == '%':
+        state = '2B'                                                 
         
     return state
 

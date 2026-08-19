@@ -143,7 +143,47 @@ function bytes_translate(character)
 	else if (character == "21")
 	{
 		state = "/";
-	}			
+	}
+	else if (character == "22")
+	{
+		state = ".";
+	}
+	else if (character == "23")
+	{
+		state = ",";
+	}
+	else if (character == "24")
+	{
+		state = ";";
+	}
+	else if (character == "25")
+	{
+		state = "{";
+	}	
+	else if (character == "26")
+	{
+		state = "}";
+	}
+	else if (character == "27")
+	{
+		state = "(";
+	}
+	else if (character == "28")
+	{
+		state = ")";
+	}
+	else if (character == "29")
+	{
+		state = ":";
+	}
+	else if (character == "2A")
+	{
+		state = "@";
+	}
+	else if (character == "2B")
+	{
+		state = "%";
+	}					
 	// Give The One Digit Character Compressing For Cookie Size
 	return state;
 }
