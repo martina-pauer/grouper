@@ -79,7 +79,67 @@ def byte_translate(character) -> str:
     elif character == '@':
         state = '2A'
     elif character == '%':
-        state = '2B'                                                 
+        state = '2B'
+    elif character == '=':
+        state = '2C'
+    elif character == '?':
+        state = '2D'
+    elif character == '¿':
+        state = '2E'
+    elif character == '$':
+        state = '2F'
+    elif character == '#':
+        state = '30'
+    elif character == '&':
+        state = '31'
+    elif character == '\\':
+        state = '32'
+    elif character == '~':
+        state = '33'
+    elif character == '<':
+        state = '34'
+    elif character == '>':
+        state = '35'
+    elif character == '!':
+        state = '36'
+    elif character == '_':
+        state = '37'
+    elif character == '°':
+        state = '38' 
+    elif character == '|':
+        state = '39'  
+    elif character == '¬':
+        state = '3A'
+    elif character == '^':
+        state = '3B'
+    elif character == '`':
+        state = '3C'
+    elif character == '¨':
+        state = '3D'
+    elif character == "'":
+        state = '3E'
+    elif character == 'Ø':
+        state = '3F'
+    elif character == '«':
+        state = '40'
+    elif character == '»':
+        state = '41'
+    elif character == '¦':
+        state = '42'
+    elif character == '©':
+        state = '43'
+    elif character == '¢':
+        state = '44' 
+    elif character == 'Ł':
+        state = '45'
+    elif character == 'Ω':
+        state = '46'
+    elif character == 'ß':
+        state = '47' 
+    elif character == 'æ':
+        state = '48'
+    elif character == 'Ð':
+        state = '49'                                                                                                                                                                
         
     return state
 

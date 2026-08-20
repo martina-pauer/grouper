@@ -183,7 +183,127 @@ function bytes_translate(character)
 	else if (character == "2B")
 	{
 		state = "%";
-	}					
+	}
+	else if (character == "2C")
+	{
+		state = "=";
+	}
+	else if (character == "2D")
+	{
+		state = "?";
+	}
+	else if (character == "2E")
+	{
+		state = "¿";
+	}
+	else if (character == "2F")
+	{
+		state = "$";
+	}
+	else if (character == "30")
+	{
+		state = "#";
+	}
+	else if (character == "31")
+	{
+		state = "&";
+	}
+	else if (character == "32")
+	{
+		state = "\\";
+	}
+	else if (character == "33")
+	{
+		state = "~";
+	}	
+	else if (character == "34")
+	{
+		state = "<";
+	}
+	else if (character == "35")
+	{
+		state = ">";
+	}
+	else if (character == "36")
+	{
+		state = "!";
+	}
+	else if (character == "37")
+	{
+		state = "_";
+	}
+	else if (character == "38")
+	{
+		state = "°";
+	}	
+	else if (character == "39")
+	{
+		state = "|";
+	}
+	else if (character == "3A")
+	{
+		state = "¬";
+	}
+	else if (character == "3B")
+	{
+		state = "^";
+	}
+	else if (character == "3C")
+	{
+		state = "`";
+	}
+	else if (character == "3D")
+	{
+		state = "¨";
+	}
+	else if (character == "3E")
+	{
+		state = "'";
+	}
+	else if (character == "3F")
+	{
+		state = "Ø";
+	}
+	else if (character == "40")
+	{
+		state = "«";
+	}
+	else if (character == "41")
+	{
+		state = "»";
+	}
+	else if (character == "42")
+	{
+		state = "¦";
+	}
+	else if (character == "43")
+	{
+		state = "©";
+	}
+	else if (character == "44")
+	{
+		state = "¢";
+	}
+	else if (character == "45")
+	{
+		state = "Ł";
+	}
+	else if (character == "46")
+	{
+		state = "Ω";
+	}
+	else if (character == "47")
+	{
+		state = "ß";
+	}
+	else if (character == "48")
+	{
+		state = "æ";
+	}
+	else if (character == "49")
+	{
+		state = "Ð";
+	}																																
 	// Give The One Digit Character Compressing For Cookie Size
 	return state;
 }
