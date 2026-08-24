@@ -303,7 +303,87 @@ function bytes_translate(character)
 	else if (character == "49")
 	{
 		state = "Ð";
-	}																																
+	}	
+	else if (character == "4A")
+	{
+		state = 'ŋ';
+	}	
+	else if (character == "4B")
+	{
+		state =  "þ";
+	}
+	else if (character == "4C")
+	{
+		state = " ";
+	}
+	else if (character == "4D")
+	{
+		state = "€";
+	}	
+	else if (character == "4E")
+	{
+		state = "¥";
+	}
+	else if (character == "4F")
+	{
+		state = '·';
+	}
+	else if (character == "50")
+	{
+		state = "Σ";
+	}		
+	else if (character == "51")
+	{
+		state = "φ";
+	}
+	else if (character == "52")
+	{
+		state = "ψ";
+	}	
+	else if (character == "53")
+	{
+		state = "ᴨ";
+	}	
+	else if (character == "54")
+	{
+		state = "Δ";
+	}
+	else if (character == "55")
+	{
+		state = "¶";
+	}	
+	else if (character == "56")
+	{
+		state = "®";
+	}
+	else if (character == "57")
+	{
+		state = "¼";
+	}
+	else if (character == "58")
+	{
+		state = "½";
+	}
+	else if (character == "59")
+	{
+		state = "♦";
+	}	
+	else if (character == "5A")
+	{
+		state = "♣";
+	}
+	else if (character == "5B")
+	{
+		state = "♠";
+	}	
+	else if (character == "5C")
+	{
+		state = "♥";
+	}
+	else if (character == "5D")
+	{
+		state = "♩";
+	}	
 	// Give The One Digit Character Compressing For Cookie Size
 	return state;
 }

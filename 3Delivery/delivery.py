@@ -139,7 +139,47 @@ def byte_translate(character) -> str:
     elif character == 'æ':
         state = '48'
     elif character == 'Ð':
-        state = '49'                                                                                                                                                                
+        state = '49'
+    elif character == 'ŋ':
+        state = '4A' 
+    elif character == 'þ':
+        state = '4B'
+    elif character == ' ':
+        state = '4C'
+    elif character == '€':
+        state = '4D' 
+    elif character == '¥':
+        state = '4E'
+    elif character == '·':
+        state = '4F' 
+    elif character == 'Σ':
+        state = '50'
+    elif character == 'φ':
+        state = '51' 
+    elif character == 'ψ':
+        state = '52'
+    elif character == 'ᴨ':
+        state = '53'
+    elif character == 'Δ':
+        state = '54'
+    elif character == '¶':
+        state = '55'
+    elif character == '®':
+        state = '56' 
+    elif character == '¼':
+        state = '57'  
+    elif character == '½':
+        state = '58'
+    elif character == '♦':
+        state = '59'
+    elif character == '♣':
+        state = '5A' 
+    elif character == '♠':
+        state = '5B'
+    elif character == '♥': 
+        state = '5C' 
+    elif character == '♩':
+        state = '5D'                                                                                                                                                                                                                                 
         
     return state
 
