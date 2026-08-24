@@ -384,6 +384,46 @@ function bytes_translate(character)
 	{
 		state = "♩";
 	}	
+	else if (character == "5E")
+	{
+		state = "♫";
+	}
+	else if (character == "5F")
+	{
+		state = "♪";
+	}
+	else if (character == "60")
+	{
+		state = "♬";
+	}
+	else if (character == "61")
+	{
+		state = "◘";
+	}
+	else if (character == "62")
+	{
+		state = "◙";
+	}
+	else if (character == "63")
+	{
+		state = "◖";
+	}
+	else if (character == "64")
+	{
+		state = "◗";
+	}
+	else if (character == "65")
+	{
+		state = "▌";
+	}
+	else if (character == "66")
+	{
+		state = "∞";
+	}	
+	else if (character == "67")
+	{
+		state = "◕";
+	}
 	// Give The One Digit Character Compressing For Cookie Size
 	return state;
 }

@@ -179,7 +179,27 @@ def byte_translate(character) -> str:
     elif character == '♥': 
         state = '5C' 
     elif character == '♩':
-        state = '5D'                                                                                                                                                                                                                                 
+        state = '5D'
+    elif character == '♫':
+        state = '5E'
+    elif character == '♪':
+        state = '5F' 
+    elif character == '♬':
+        state = '60'
+    elif character == '◘': 
+        state = '61'
+    elif character == '◙':
+        state = '62'  
+    elif character == '◖':
+        state = '63'
+    elif character == '◗':
+        state = '64'
+    elif character == '▌':
+        state = '65' 
+    elif character == '∞':
+        state = '66' 
+    elif character == '◕':
+        state = '67'                                                                                                                                                                                                                                                                   
         
     return state
 
