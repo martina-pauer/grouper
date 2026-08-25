@@ -60,7 +60,11 @@ async function saveContent(id)
 			
 		let bytes;
 		let content = "";
-				
+		// The Cookies Only Could Storage Until 4096 Bytes
+		const maxCookieSize = 4096;
+		// Each character Has 4 Bytes The Most Of Times
+		let storedSize = (document.cookie.length() * 4);
+
 		for (let file in files)
 		{
 		  // filter only list index instead of list properties
@@ -71,10 +75,11 @@ async function saveContent(id)
 				    
 		    	for (let byte in bytes)
 		    	{
-		        	if (byte <= 4095)
+		        	if (storedSize <= (maxCookieSize - 32))
 					{
                     	// Compress To don't pass The 4kb Cookie Maximum Size
 				    	content = content.concat(bytes_translate(decToHex(bytes[byte])));
+						storedSize = (storedSize + 1);
 					}   
 				}
 				    
