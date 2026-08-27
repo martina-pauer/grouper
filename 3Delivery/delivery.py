@@ -52,32 +52,35 @@ def inform() -> str:
     file_name: str = ''
 
     data: list[str] =   [
-                            request.cookies['grouper'],
+                            'Disable Cookie By Now',#request.cookies['grouper'],
                             request.form['copies'],
                             request.form['material']
                         ]
     
     # Load file binary content
-    binary: list[bytes] = []
-
-    for b in data[0]:
+    binary: list[bytes] = ['disable']
+    # Disable file creation by now
+    #for b in data[0]:
         # Add One Character that represent Byte
-        binary.append(bytes(int(byte_translate(b), 16), 'utf-8'))
+        #binary.append(bytes(int(byte_translate(b), 16), 'utf-8'))
     # Write as binary file in models folder
-    try:
-        file_name = binary.__hash__()
-        with open(f'models/user_{file_name}.3mf', 'wb') as writer:
-            for bin in binary:
-                writer.write(bin)
-    except:
-        pass
+    file_name = binary[0].__hash__()
+    #try:
+        #with open(f'models/user_{file_name}.3mf', 'wb') as writer:
+            #for bin in binary:
+                #writer.write(bin)
+    #except:
+        #pass
     # Save Into database
     try:
         runner.execute('CREATE TABLE delivery(Code varchar(20), File varchar(20), Copies int, Material varchar(4), Place varchar(20));')
         connector.commit()
-        runner.execute(f'INSERT INTO delivery(Code, File, Copies, Material) VALUES ({inform_code}, {file_name}, {data[0]}, {data[1]});')                 
-        connector.commit()
     except:
         pass
+    try:
+        runner.execute(f'INSERT INTO delivery (Code, File, Copies, Material) VALUES ("{inform_code}", "{file_name}", {data[1]}, "{data[2]}");')                 
+        connector.commit()
+    except:
+        pass    
     # Render the form for view the loaded data
     return page()
