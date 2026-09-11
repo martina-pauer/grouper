@@ -6,14 +6,6 @@
         <title>3Delivery App</title>
         <link rel = "stylesheet" href = "https://rawcdn.githack.com/martina-pauer/grouper/refs/heads/main/3Delivery/static/style.css" />
         <script type = "text/javascript" src = "https://rawcdn.githack.com/martina-pauer/grouper/08122aaa6d2d6a2a6061256edbda329488227415/3Delivery/canvasMap.js"></script>
-        <script type = "text/javascript">
-            
-            const img = new Image();
-            img.src = "https://www.scielo.org.ar/img/revistas/reuge/v20n1/a02g01.png";
-
-            canvas = document.getElementById("map").getContext("2d");
-            canvas.drawImage(img, 1, 1);
-        </script>
     </head>
     <body>
         <form id = "delivery-form" name = "delivery-form" action = "delivery" method = "POST">
@@ -36,5 +28,13 @@
                 </section>
             </aside>
         </form>
+        <script type = "text/javascript">
+            
+            const img = new Image();
+            img.src = "https://www.scielo.org.ar/img/revistas/reuge/v20n1/a02g01.png";
+
+            canvas = document.getElementById("map").getContext("2d");
+            canvas.drawImage(img, 1, 1);
+        </script>
     </body>    
 </html>
