@@ -60,6 +60,36 @@ function plotMap(id, longitude, latitude)
     canvas.strokeRect(width, height, 10, 10)
 }
 
+function getLongitude(click_X)
+{
+	// Turn landscape click position into longitude in the map
+	let minor_comparing = click_X - 38.68;
+	let minor_value = -38.68
+	for (let value = -38.68; value >= -38.78; value = value - 0.01)
+	{
+		value = value.toFixed(2);
+	  // Use Last Nearest Value To Longitude In The Map Values
+		if ((click_X + value) < minor_comparing)
+		{
+			minor_comparing = (click_X + value);
+			minor_value = value;
+		}
+	}
+	return minor_value;
+}
+
+function getLatitude(click_Y)
+{
+  // Turn  portrait click position into latitude in the map
+	if (click_Y <= 42)
+	{
+		return -62.24
+	}
+	else
+	{
+		return -62.27;
+	}
+}
 function decToHex(number)
 {
     // Turn Decimal number to hexadecimal number
