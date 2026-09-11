@@ -11,7 +11,7 @@
             const img = new Image();
             img.src = "https://www.scielo.org.ar/img/revistas/reuge/v20n1/a02g01.png";
 
-            canvas = document.getElementById("map");
+            canvas = document.getElementById("map").getContext("2d");
             canvas.drawImage(img, 1, 1);
         </script>
     </head>
