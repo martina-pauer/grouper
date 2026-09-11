@@ -8,7 +8,51 @@ function plotMap(id, longitude, latitude)
     canvas = canvas.getContext("2d");
     // Draw map
 	const img = new Image();
-	img.src = "https://raw.githubusercontent.com/martina-pauer/grouper/refs/heads/main/3Delivery/cities/city_0/BBA_0.png";
+
+	if ((longitude == -38.68) && (latitude == -62.24))
+	{
+		img.src = "https://raw.githubusercontent.com/martina-pauer/grouper/refs/heads/main/3Delivery/cities/city_0/BBA_0.png";
+	}	
+	else if ((longitude == -38.69) && (latitude == -62.27))
+	{
+		img.src = "https://raw.githubusercontent.com/martina-pauer/grouper/refs/heads/main/3Delivery/cities/city_0/BBA_1.png";
+	}
+	else if ((longitude == -38.70) && (latitude == -62.27))
+	{
+		img.src = "https://raw.githubusercontent.com/martina-pauer/grouper/refs/heads/main/3Delivery/cities/city_0/BBA_2.png";
+	}
+	else if ((longitude == -38.71) && (latitude == -62.27))
+	{
+		img.src = "https://raw.githubusercontent.com/martina-pauer/grouper/refs/heads/main/3Delivery/cities/city_0/BBA_3.png";
+	}
+	else if ((longitude == -38.72) && (latitude == -62.27))
+	{
+		img.src = "https://raw.githubusercontent.com/martina-pauer/grouper/refs/heads/main/3Delivery/cities/city_0/BBA_4.png";
+	}
+	else if ((longitude == -38.73) && (latitude == -62.27))
+	{
+		img.src = "https://raw.githubusercontent.com/martina-pauer/grouper/refs/heads/main/3Delivery/cities/city_0/BBA_5.png";
+	}
+	else if ((longitude == -38.74) && (latitude == -62.27))
+	{
+		img.src = "https://raw.githubusercontent.com/martina-pauer/grouper/refs/heads/main/3Delivery/cities/city_0/BBA_6.png";
+	}
+	else if ((longitude == -38.75) && (latitude == -62.27))
+	{
+		img.src = "https://raw.githubusercontent.com/martina-pauer/grouper/refs/heads/main/3Delivery/cities/city_0/BBA_7.png";
+	}
+	else if ((longitude == -38.76) && (latitude == -62.27))
+	{
+		img.src = "https://raw.githubusercontent.com/martina-pauer/grouper/refs/heads/main/3Delivery/cities/city_0/BBA_8.png";
+	}
+	else if ((longitude == -38.77) && (latitude == -62.27))
+	{
+		img.src = "https://raw.githubusercontent.com/martina-pauer/grouper/refs/heads/main/3Delivery/cities/city_0/BBA_9.png";
+	}
+	else if ((longitude == -38.78) && (latitude == -62.27))
+	{
+		img.src = "https://raw.githubusercontent.com/martina-pauer/grouper/refs/heads/main/3Delivery/cities/city_0/BBA_10.png";
+	}
 	canvas.drawImage(img, 0, 0);
     // Add Mark
     canvas.strokeRect(width, height, 10, 10)
