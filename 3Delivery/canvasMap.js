@@ -6,9 +6,11 @@ function plotMap(id, longitude, latitude)
     let width = canvas.width / Math.abs(longitude);
     let height = canvas.height / Math.abs(latitude);
     canvas = canvas.getContext("2d");
+	// Clear Full Map
+	canvas.reset();
     // Draw map
 	const img = new Image();
-
+	
 	if ((longitude == -38.68) && (latitude == -62.24))
 	{
 		img.src = "https://raw.githubusercontent.com/martina-pauer/grouper/refs/heads/main/3Delivery/cities/city_0/BBA_0.png";
