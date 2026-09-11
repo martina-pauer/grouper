@@ -6,7 +6,10 @@ function plotMap(id, longitude, latitude)
     let width = canvas.width / Math.abs(longitude);
     let height = canvas.height / Math.abs(latitude);
     canvas = canvas.getContext("2d");
-    // Draw map From 0 to longitud and from 0 to latitude
+    // Draw map
+	const img = new Image();
+	img.src = "https://raw.githubusercontent.com/martina-pauer/grouper/refs/heads/main/3Delivery/cities/city_0/BBA_0.png";
+	canvas.drawImage(img, 0, 0);
     // Add Mark
     canvas.strokeRect(width, height, 10, 10)
 }
