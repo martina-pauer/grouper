@@ -54,7 +54,7 @@ function plotMap(id, longitude, latitude)
 		img.src = "https://raw.githubusercontent.com/martina-pauer/grouper/refs/heads/main/3Delivery/cities/city_0/BBA_10.png";
 	}
 	// Add Mark
-    canvas.strokeRect(width, height, 10, 10)
+    canvas.strokeRect(width, height, 10, 10);
 	canvas.drawImage(img, 10, 10);
 }
 
