@@ -96,7 +96,7 @@ function getLongitude(click_X)
 function getLatitude(click_Y)
 {
   // Turn  portrait click position into latitude in the map
-	if (click_Y <= 42)
+	if (click_Y <= 130)
 	{
 		return -62.24
 	}
