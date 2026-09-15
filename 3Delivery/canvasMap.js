@@ -6,8 +6,6 @@ function plotMap(id, longitude, latitude)
     let width = canvas.width / Math.abs(longitude);
     let height = canvas.height / Math.abs(latitude);
     canvas = canvas.getContext("2d");
-	// Clear Full Map
-	canvas.reset();
     // Draw map
 	const img = new Image();
 	
@@ -55,9 +53,9 @@ function plotMap(id, longitude, latitude)
 	{
 		img.src = "https://raw.githubusercontent.com/martina-pauer/grouper/refs/heads/main/3Delivery/cities/city_0/BBA_10.png";
 	}
-	canvas.drawImage(img, 0, 0);
-    // Add Mark
+	// Add Mark
     canvas.strokeRect(width, height, 10, 10)
+	canvas.drawImage(img, 10, 10);
 }
 
 function getClick(axis)
