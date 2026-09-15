@@ -60,6 +60,21 @@ function plotMap(id, longitude, latitude)
     canvas.strokeRect(width, height, 10, 10)
 }
 
+function getClick(axis)
+{
+	// Get click position from width or height
+		document.addEventListener (	"click",	(event) => {
+					if (axis = "x")
+					{
+						return event.clientX;
+					}
+					else
+					{
+						return event.clientY;
+					}
+		});
+}
+
 function getLongitude(click_X)
 {
 	// Turn landscape click position into longitude in the map
