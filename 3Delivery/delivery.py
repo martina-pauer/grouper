@@ -52,25 +52,13 @@ def inform() -> str:
     file_name: str = ''
 
     data: list[str] =   [
-                            'Disable Cookie By Now',#request.cookies['grouper'],
+                            request.form['address'],
                             request.form['copies'],
-                            request.form['material']
+                            request.form['material'],
+                            request.form['model']
                         ]
-    
-    # Load file binary content
-    binary: list[bytes] = ['disable']
-    # Disable file creation by now
-    #for b in data[0]:
-        # Add One Character that represent Byte
-        #binary.append(bytes(int(byte_translate(b), 16), 'utf-8'))
-    # Write as binary file in models folder
-    file_name = binary[0].__hash__()
-    #try:
-        #with open(f'models/user_{file_name}.3mf', 'wb') as writer:
-            #for bin in binary:
-                #writer.write(bin)
-    #except:
-        #pass
+    # Use Pre-loaded piece
+    file_name = data[3]
     # Save Into database
     try:
         runner.execute('CREATE TABLE delivery(Code varchar(20), File varchar(20), Copies int, Material varchar(4), Place varchar(20));')
@@ -78,7 +66,7 @@ def inform() -> str:
     except:
         pass
     try:
-        runner.execute(f'INSERT INTO delivery (Code, File, Copies, Material) VALUES ("{inform_code}", "{file_name}", {data[1]}, "{data[2]}");')                 
+        runner.execute(f'INSERT INTO delivery (Code, File, Copies, Material, Place) VALUES ("{inform_code}", "{file_name}", {data[1]}, "{data[2]}", "{data[0]}");')                 
         connector.commit()
     except:
         pass    
